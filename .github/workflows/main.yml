@@ -1,0 +1,28 @@
+name: Build iOS App
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: macos-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Flutter (Compatible Version)
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.16.0'  # إصدار متوافق مع Dart 3.2.3
+
+      - name: Install dependencies
+        run: flutter pub get
+
+      - name: Build iOS IPA
+        run: flutter build ipa --export-method development --no-codesign
+
+      - name: Upload IPA artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: TipMe-App-IPA
+          path: build/ios/ipa/*.ipa
