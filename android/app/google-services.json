@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "90241543608",
+    "project_id": "tipme-13a0c",
+    "storage_bucket": "tipme-13a0c.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:90241543608:android:70ad7d7d610e314d98b34d",
+        "android_client_info": {
+          "package_name": "iih.amman.tipme_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC9wEC6ozmiC5wWpSipWt_yR4rLcq8GbeM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,20 @@
+version: '3.8'
+
+services:
+  flutter-android-builder:
+    build:
+      context: .
+      dockerfile: Dockerfile.android
+    volumes:
+      - .:/workspace
+      - flutter-cache:/root/.flutter
+      - gradle-cache:/root/.gradle
+    environment:
+      - JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64
+      - ANDROID_SDK_ROOT=/opt/android-sdk
+      - ANDROID_HOME=/opt/android-sdk
+    command: flutter build apk --release
+
+volumes:
+  flutter-cache:
+  gradle-cache:
