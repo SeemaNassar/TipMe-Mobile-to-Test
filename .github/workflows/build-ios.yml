@@ -1,0 +1,29 @@
+name: Build iOS IPA
+
+on:
+  workflow_dispatch: # هذا يسمح لك بتشغيل العملية يدوياً
+
+jobs:
+  build:
+    runs-on: macos-latest # سيستخدم GitHub أحدث macOS متاح
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.16.0' # أو أي إصدار تستخدمينه
+
+      - name: Install Dependencies
+        run: flutter pub get
+
+      - name: Build iOS IPA
+        run: flutter build ipa --export-method development --no-codesign
+
+      - name: Upload IPA Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: tipme-app-ipa
+          path: build/ios/ipa/*.ipa
