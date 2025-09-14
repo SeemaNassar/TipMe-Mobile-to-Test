@@ -1,0 +1,25 @@
+name: Build iOS App
+
+on: workflow_dispatch
+
+jobs:
+  build:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+        
+      - name: Setup Flutter (Latest)
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.28.0'  # إصدار أحدث
+
+      - name: Get Packages
+        run: flutter pub get
+
+      - name: Build IPA
+        run: flutter build ipa --debug --no-codesign
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: App-IPA
+          path: build/ios/ipa/*.ipa
